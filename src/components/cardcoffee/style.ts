@@ -87,8 +87,15 @@ export const GridCoffeeItemContainer = styled.div`
       margin-left: 0.5rem;
       background: ${(props) => props.theme['purple-dark']};
       border-radius: 0.5rem;
+      cursor: pointer;
       svg {
         color: ${(props) => props.theme['white']};
+      }
+
+      transition: background-color 0.1s;
+
+      &:hover {
+        background: ${(props) => props.theme['purple']};
       }
     }
   }

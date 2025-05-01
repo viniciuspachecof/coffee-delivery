@@ -10,7 +10,8 @@ export const HeaderContainer = styled.header`
     display: flex;
     gap: 0.75rem;
 
-    a {
+    a,
+    span {
       display: flex;
       gap: 0.25rem;
       align-items: center;
