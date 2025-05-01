@@ -1,98 +1,5 @@
 import styled from 'styled-components';
 
-export const InfoContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 5.75rem 0 2.875rem;
-
-  .coffee-info {
-    flex: 1;
-    h1 {
-      font-family: 'Baloo 2';
-      font-size: 3rem;
-      font-weight: 800;
-      color: ${(props) => props.theme['base-title']};
-      line-height: 3.75rem;
-    }
-
-    > p {
-      font-size: 1.25rem;
-      color: ${(props) => props.theme['base-subtitle']};
-      margin-top: 20px;
-    }
-  }
-
-  .coffee-img-home {
-    flex: 0.9;
-    text-align: center;
-  }
-`;
-
-export const GridContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem 0;
-  margin-top: 3.75rem;
-
-  div:nth-of-type(1) {
-    span {
-      background: ${(props) => props.theme['yellow-dark']};
-    }
-  }
-
-  div:nth-of-type(2) {
-    span {
-      background: ${(props) => props.theme['base-text']};
-    }
-  }
-
-  div:nth-of-type(3) {
-    span {
-      background: ${(props) => props.theme['yellow']};
-    }
-  }
-
-  div:nth-of-type(4) {
-    span {
-      background: ${(props) => props.theme['purple']};
-    }
-  }
-`;
-
-export const GridItemContainer = styled.div`
-  display: flex;
-  gap: 0.75rem;
-  align-items: center;
-
-  span {
-    display: flex;
-    padding: 0.5rem;
-    border-radius: 100%;
-
-    svg {
-      color: ${(props) => props.theme['white']};
-    }
-  }
-`;
-
-export const ListaCoffee = styled.div`
-  margin: 7.5rem 0 5.75rem;
-
-  h1 {
-    font-family: 'Baloo 2';
-    font-size: 2rem;
-    font-weight: 800;
-    color: ${(props) => props.theme['base-subtitle']};
-    margin-bottom: 3.375rem;
-  }
-`;
-
-export const GridCoffeeContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2.5rem 2rem;
-`;
-
 export const GridCoffeeItemContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -111,7 +18,8 @@ export const GridCoffeeItemContainer = styled.div`
   border-bottom-left-radius: 30px;
 
   > img {
-    margin-top: -1rem;
+    margin-top: -1.25rem;
+    width: 120px;
   }
 
   .categorias-coffee {
