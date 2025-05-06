@@ -9,8 +9,15 @@ import {
 } from '@phosphor-icons/react';
 import coffeeExpresso from '../../assets/coffees/coffee-expresso.svg';
 import coffeeLatte from '../../assets/coffees/coffee-latte.svg';
+import { useNavigate } from 'react-router-dom';
 
 export function MeuPedido() {
+  const navigate = useNavigate();
+
+  function direcionarPagina() {
+    navigate('/ConfirmacaoPedido');
+  }
+
   return (
     <PedidoContainer>
       <div className="info-entrega">
@@ -139,7 +146,7 @@ export function MeuPedido() {
             </div>
           </div>
 
-          <button>CONFIRMAR PEDIDO</button>
+          <button onClick={direcionarPagina}>CONFIRMAR PEDIDO</button>
         </div>
       </div>
     </PedidoContainer>
