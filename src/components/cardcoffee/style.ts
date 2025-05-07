@@ -55,6 +55,10 @@ export const GridCoffeeItemContainer = styled.div`
     display: flex;
     align-items: center;
 
+    form {
+      display: flex;
+    }
+
     .preco-coffee {
       display: flex;
       gap: 3px;
@@ -87,6 +91,7 @@ export const GridCoffeeItemContainer = styled.div`
       margin-left: 0.5rem;
       background: ${(props) => props.theme['purple-dark']};
       border-radius: 0.5rem;
+      border: 0;
       cursor: pointer;
       svg {
         color: ${(props) => props.theme['white']};
