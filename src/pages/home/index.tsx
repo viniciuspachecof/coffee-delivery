@@ -8,19 +8,9 @@ import {
   ListaCoffee,
 } from './styles';
 import { CardCoffee } from '../../components/cardcoffee';
-import { useState } from 'react';
-import { ICoffee } from '../../interface/Coffee';
-import { DataCoffes } from '../../data/Coffes';
+import { DataCoffes } from '../../data/CoffesData';
 
 export function Home() {
-  const [coffees, setCoffees] = useState<ICoffee[]>([]);
-
-  function handleAdicionarCoffee(data: ICoffee) {
-    setCoffees((state) => [...state, { ...data }]);
-  }
-
-  console.log(coffees);
-
   return (
     <div>
       <InfoContainer>
@@ -69,7 +59,7 @@ export function Home() {
 
         <GridCoffeeContainer>
           {DataCoffes.map((coffee) => (
-            <CardCoffee {...coffee} onAdicionarCoffee={handleAdicionarCoffee} />
+            <CardCoffee key={coffee.id} {...coffee} />
           ))}
         </GridCoffeeContainer>
       </ListaCoffee>

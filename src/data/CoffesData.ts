@@ -1,4 +1,4 @@
-import { ICoffee } from '../interface/Coffee';
+import { ICoffee } from '../interface/ICoffee';
 import coffeeExpresso from '../assets/coffees/coffee-expresso.svg';
 import coffeeAmericano from '../assets/coffees/coffee-americano.svg';
 import coffeeExpressoCremoso from '../assets/coffees/coffee-expresso-cremoso.svg';

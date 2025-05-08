@@ -7,12 +7,20 @@ import {
   Bank,
   Money,
 } from '@phosphor-icons/react';
-import coffeeExpresso from '../../assets/coffees/coffee-expresso.svg';
-import coffeeLatte from '../../assets/coffees/coffee-latte.svg';
 import { useNavigate } from 'react-router-dom';
+import { useContext } from 'react';
+import { CoffeesContext } from '../../contexts/CoffeesContext';
 
 export function MeuPedido() {
   const navigate = useNavigate();
+  const { coffees } = useContext(CoffeesContext);
+
+  const valorEntrega = 3.5;
+  const valorTotalItens = coffees.reduce(
+    (soma, coffee) => soma + coffee.valor * coffee.qtde,
+    0
+  );
+  const valorTotalPedido = valorTotalItens + valorEntrega;
 
   function direcionarPagina() {
     navigate('/ConfirmacaoPedido');
@@ -118,31 +126,22 @@ export function MeuPedido() {
       <div className="info-selecionado">
         <p>Cafés selecionados</p>
         <div className="card-selecionado">
-          <CardCoffeePedido
-            img={coffeeExpresso}
-            descricao="Expresso Tradicional"
-            qtde={1}
-            valor="9,90"
-          />
-          <CardCoffeePedido
-            img={coffeeLatte}
-            descricao="Latte"
-            qtde={2}
-            valor="19,80"
-          />
+          {coffees.map((coffee) => {
+            return <CardCoffeePedido {...coffee} />;
+          })}
 
           <div className="total-pedido">
             <div>
               <span>Total de itens</span>
-              <span>R$ 29,70</span>
+              <span>R$ {valorTotalItens.toFixed(2).replace('.', ',')}</span>
             </div>
             <div>
               <span>Entrega</span>
-              <span>R$ 3,50</span>
+              <span>R$ {valorEntrega.toFixed(2).replace('.', ',')}</span>
             </div>
             <div className="total-valor">
               <span>Total</span>
-              <span>R$ 33,20</span>
+              <span>R$ {valorTotalPedido.toFixed(2).replace('.', ',')}</span>
             </div>
           </div>
 

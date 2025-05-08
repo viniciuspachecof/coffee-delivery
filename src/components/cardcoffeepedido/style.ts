@@ -44,6 +44,7 @@ export const CoffePedidoContainer = styled.div`
           font-size: 0.75rem;
           cursor: pointer;
           transition: background-color 0.1s;
+          color: ${(props) => props.theme['base-text']};
 
           &:hover {
             background: ${(props) => props.theme['base-hover']};

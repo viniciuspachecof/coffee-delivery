@@ -1,11 +1,8 @@
-import { ChangeEvent, FormEvent, useState } from 'react';
+import { ChangeEvent, FormEvent, useContext, useState } from 'react';
 import { GridCoffeeItemContainer } from './style';
 import { ShoppingCart } from '@phosphor-icons/react';
-import { ICoffee } from '../../interface/Coffee';
-
-interface CardCoffeeProps extends ICoffee {
-  onAdicionarCoffee: (data: ICoffee) => void;
-}
+import { ICoffee } from '../../interface/ICoffee';
+import { CoffeesContext } from '../../contexts/CoffeesContext';
 
 export function CardCoffee({
   id,
@@ -14,8 +11,8 @@ export function CardCoffee({
   titulo,
   descricao,
   valor,
-  onAdicionarCoffee,
-}: CardCoffeeProps) {
+}: ICoffee) {
+  const { onAdicionarCoffee } = useContext(CoffeesContext);
   const [qtdeCoffee, setQtdeCoffee] = useState(1);
 
   function handleFormCoffee(event: FormEvent) {
@@ -36,8 +33,8 @@ export function CardCoffee({
     <GridCoffeeItemContainer>
       <img src={img} alt="" />
       <div className="categorias-coffee">
-        {categorias.map((categoria) => (
-          <span>{categoria}</span>
+        {categorias.map((categoria, index) => (
+          <span key={index}>{categoria}</span>
         ))}
       </div>
       <h3>{titulo}</h3>
@@ -56,6 +53,7 @@ export function CardCoffee({
               setQtdeCoffee(Number(event.target.value))
             }
             min={1}
+            value={qtdeCoffee}
           />
           <button className="adicionar-coffee" type="submit">
             <ShoppingCart size={22} weight="fill" />
