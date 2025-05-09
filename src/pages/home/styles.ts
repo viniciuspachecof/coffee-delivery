@@ -6,8 +6,11 @@ export const InfoContainer = styled.div`
   gap: 4rem;
   margin: 5.75rem 0 2.875rem;
 
+  @media (max-width: 1020px) {
+    grid-template-columns: 1fr;
+  }
+
   .coffee-info {
-    flex: 1;
     h1 {
       font-family: 'Baloo 2';
       font-size: 3rem;
@@ -24,8 +27,13 @@ export const InfoContainer = styled.div`
   }
 
   .coffee-img-home {
-    flex: 0.9;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+    }
   }
 `;
 
@@ -92,6 +100,10 @@ export const GridCoffeeContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2.5rem 2rem;
+
+  @media (max-width: 1120px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const GridCoffeeItemContainer = styled.div`

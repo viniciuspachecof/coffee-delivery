@@ -19,8 +19,12 @@ export const ConfirmacaoPedidoContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 6.375rem;
-  margin-top: 2.5rem;
+  margin: 2.5rem 0 5.75rem;
   align-items: center;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 
   .info-confirmacao-pedido {
     height: 16.875rem;
@@ -61,6 +65,14 @@ export const ConfirmacaoPedidoContainer = styled.div`
       span {
         background: ${(props) => props.theme['yellow-dark']};
       }
+    }
+  }
+
+  .coffee-img-confirmacao {
+    text-align: center;
+
+    img {
+      max-width: 100%;
     }
   }
 `;

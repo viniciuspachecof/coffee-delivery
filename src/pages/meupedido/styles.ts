@@ -1,9 +1,53 @@
 import styled from 'styled-components';
 
+export const PedidoEmptyContainer = styled.div`
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: 20%;
+
+  img {
+    width: 7rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    color: ${(props) => props.theme['base-subtitle']};
+    font-size: 1rem;
+    margin-bottom: 2px;
+  }
+
+  span {
+    font-size: 0.875rem;
+  }
+
+  button {
+    text-decoration: none;
+    background: transparent;
+    color: ${(props) => props.theme['yellow']};
+    font-size: 0.875rem;
+    border: 1px solid ${(props) => props.theme['yellow']};
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.1s;
+    cursor: pointer;
+    margin-top: 1rem;
+
+    &:hover {
+      background: ${(props) => props.theme['yellow']};
+      color: ${(props) => props.theme['white']};
+    }
+  }
+`;
+
 export const PedidoContainer = styled.div`
   display: grid;
   grid-template-columns: 640px 1fr;
   gap: 2rem;
+
+  @media (max-width: 1070px) {
+    grid-template-columns: 1fr;
+  }
 
   .info-entrega {
     margin-top: 2.5rem;

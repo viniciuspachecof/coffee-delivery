@@ -12,13 +12,13 @@ export function CardCoffee({
   descricao,
   valor,
 }: ICoffee) {
-  const { onAdicionarCoffee } = useContext(CoffeesContext);
+  const { onAdicionarEditarCoffee } = useContext(CoffeesContext);
   const [qtdeCoffee, setQtdeCoffee] = useState(1);
 
   function handleFormCoffee(event: FormEvent) {
     event.preventDefault();
 
-    onAdicionarCoffee({
+    onAdicionarEditarCoffee({
       id,
       img,
       categorias,

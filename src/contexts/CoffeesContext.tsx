@@ -2,7 +2,7 @@ import { createContext, ReactNode, useState } from 'react';
 import { ICoffee } from '../interface/ICoffee';
 
 interface CoffeesContextType {
-  onAdicionarCoffee: (data: ICoffee) => void;
+  onAdicionarEditarCoffee: (data: ICoffee) => void;
   onRemoverCoffee: (id: number) => void;
   onAlterarQtdeCoffee: (id: number, qtdeAtualizada: number) => void;
   coffees: ICoffee[];
@@ -19,8 +19,26 @@ export function CoffeesContextProvider({
 }: CoffeesContextProviderProps) {
   const [coffees, setCoffees] = useState<ICoffee[]>([]);
 
+  function onAdicionarEditarCoffee(data: ICoffee) {
+    const coffee = coffees.find((coffee) => coffee.id === data.id);
+
+    if (!coffee) {
+      onAdicionarCoffee(data);
+    } else {
+      onEditarCoffee(data);
+    }
+  }
+
   function onAdicionarCoffee(data: ICoffee) {
     setCoffees((state) => [...state, { ...data }]);
+  }
+
+  function onEditarCoffee(coffeeAtualizado: ICoffee) {
+    const listaCoffees = coffees.filter(
+      (coffee) => coffee.id !== coffeeAtualizado.id
+    );
+
+    setCoffees([...listaCoffees, coffeeAtualizado]);
   }
 
   function onRemoverCoffee(id: number) {
@@ -36,16 +54,14 @@ export function CoffeesContextProvider({
     if (coffee) {
       coffee.qtde = qtdeAtualizada;
 
-      listaCoffees.push(coffee);
-
-      setCoffees(listaCoffees);
+      setCoffees([...listaCoffees, coffee]);
     }
   }
 
   return (
     <CoffeesContext.Provider
       value={{
-        onAdicionarCoffee,
+        onAdicionarEditarCoffee,
         onRemoverCoffee,
         onAlterarQtdeCoffee,
         coffees,
