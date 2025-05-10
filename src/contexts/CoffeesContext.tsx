@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react';
+import { createContext, ReactNode, useEffect, useState } from 'react';
 import { ICoffee } from '../interface/ICoffee';
 
 interface CoffeesContextType {
@@ -17,7 +17,17 @@ interface CoffeesContextProviderProps {
 export function CoffeesContextProvider({
   children,
 }: CoffeesContextProviderProps) {
-  const [coffees, setCoffees] = useState<ICoffee[]>([]);
+  const [coffees, setCoffees] = useState<ICoffee[]>(() => {
+    const storedStateAsJSON = localStorage.getItem(
+      '@coffee-delivery:coffees-1.0.0'
+    );
+
+    if (storedStateAsJSON) {
+      return JSON.parse(storedStateAsJSON);
+    }
+
+    return [];
+  });
 
   function onAdicionarEditarCoffee(data: ICoffee) {
     const coffee = coffees.find((coffee) => coffee.id === data.id);
@@ -57,6 +67,12 @@ export function CoffeesContextProvider({
       setCoffees([...listaCoffees, coffee]);
     }
   }
+
+  useEffect(() => {
+    const stateJSON = JSON.stringify(coffees);
+
+    localStorage.setItem('@coffee-delivery:coffees-1.0.0', stateJSON);
+  }, [coffees]);
 
   return (
     <CoffeesContext.Provider

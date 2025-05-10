@@ -39,28 +39,18 @@ export function MeuPedido() {
               </div>
 
               <form action="" className="form-entrega">
-                <input type="text" className="input-cep" placeholder="CEP" />{' '}
+                <input type="text" className="input-cep" placeholder="CEP" />
                 <br />
-                <input
-                  type="text"
-                  className="input-rua"
-                  name=""
-                  id=""
-                  placeholder="RUA"
-                />
+                <input type="text" className="input-rua" placeholder="RUA" />
                 <div>
                   <input
-                    type="text"
+                    type="number"
                     className="input-numero"
-                    name=""
-                    id=""
                     placeholder="NÚMERO"
                   />
                   <input
                     type="text"
                     className="input-complemento"
-                    name=""
-                    id=""
                     placeholder="COMPLEMENTO"
                   />
                 </div>
@@ -68,23 +58,27 @@ export function MeuPedido() {
                   <input
                     type="text"
                     className="input-bairro"
-                    name=""
-                    id=""
                     placeholder="BAIRRO"
+                    onChange={(e) => {
+                      e.target.value = e.target.value.replace(/[^a-zA-Z]/g, '');
+                    }}
                   />
                   <input
                     type="text"
                     className="input-cidade"
-                    name=""
-                    id=""
                     placeholder="CIDADE"
+                    onChange={(e) => {
+                      e.target.value = e.target.value.replace(/[^a-zA-Z]/g, '');
+                    }}
                   />
                   <input
                     type="text"
                     className="input-uf"
-                    name=""
-                    id=""
                     placeholder="UF"
+                    maxLength={2}
+                    onChange={(e) => {
+                      e.target.value = e.target.value.replace(/[^a-zA-Z]/g, '');
+                    }}
                   />
                 </div>
               </form>
@@ -128,8 +122,8 @@ export function MeuPedido() {
             <p>Cafés selecionados</p>
 
             <div className="card-selecionado">
-              {coffees.map((coffee) => {
-                return <CardCoffeePedido {...coffee} />;
+              {coffees.map((coffee, index) => {
+                return <CardCoffeePedido key={index} {...coffee} />;
               })}
 
               <div className="total-pedido">
