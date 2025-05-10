@@ -44,6 +44,7 @@ export const PedidoContainer = styled.div`
   display: grid;
   grid-template-columns: 640px 1fr;
   gap: 2rem;
+  margin-bottom: 5.75rem;
 
   @media (max-width: 1070px) {
     grid-template-columns: 1fr;
@@ -87,6 +88,7 @@ export const PedidoContainer = styled.div`
         margin-top: 2rem;
 
         input {
+          height: 2.69rem;
           margin-bottom: 1rem;
           padding: 0.75rem;
           border: 1px solid ${(props) => props.theme['base-button']};
@@ -100,12 +102,7 @@ export const PedidoContainer = styled.div`
           }
         }
 
-        div:nth-of-type(1) {
-          display: flex;
-          gap: 0.75rem;
-        }
-
-        div:nth-of-type(2) {
+        .linha {
           display: flex;
           gap: 0.75rem;
         }
@@ -131,11 +128,17 @@ export const PedidoContainer = styled.div`
         }
 
         .input-cidade {
-          flex: 1;
+          width: 100%;
         }
 
         .input-uf {
           width: 3.75rem;
+        }
+
+        .msg-erro {
+          color: red;
+          font-size: 0.75rem;
+          margin-bottom: 1rem;
         }
       }
     }
@@ -201,6 +204,12 @@ export const PedidoContainer = styled.div`
         svg {
           color: ${(props) => props.theme['purple']};
         }
+      }
+
+      .msg-erro {
+        color: red;
+        font-size: 0.75rem;
+        margin-top: 1rem;
       }
     }
   }
